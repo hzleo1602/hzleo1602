@@ -1,3 +1,5 @@
+//Below is the project discription to find the Solution of given problem
+
 You have received an email from a Partner at Hausfeld requesting your assistance in reviewing a dataset prepared by a potential client, Transport Dupont. Transports Dupont are currently contemplating joining the action which Hausfeld started against the six truck manufacturers fined by the European Commission in 2016 and 2017. The Partner would like you to determine the number of eligible trucks per manufacturer. A truck is deemed eligible when:
 
 It weighs 6 tons or more,
@@ -17,3 +19,7 @@ When one data points is missing (e.g. no date provided), the truck is not eligib
 
 In particular, Transports Dupont estimate that garnering evidence for all of their trucks and join the claim will cost them about €50,000. They are wondering if it is worth joining your claims for them.
 
+//Below is the discription of solution 
+- First i have cleans the data using Excel. I had used the correct data types of the column and then rename the column name to access each column wihtout any error.
+- Secondly had to fill/remove the null values
+- lastly 
