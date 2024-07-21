@@ -1,0 +1,41 @@
+--- Using SQL to solve the given scenario ---
+
+//This Query is created to pull the trucks details which are eligible for Transport Comapny
+SELECT 
+    ISNULL(Manufacturer, 'Not Mentioned'),
+    COUNT(*) AS EligibleTruckCount
+FROM 
+    dbo.dummydatasetnew
+WHERE 
+    Weight_Tons >= 6
+    AND PurchaseDate BETWEEN '1997-01-01' AND '2013-12-31'
+    AND LEN(Vin) = 17
+    AND Vin NOT LIKE '%[^A-Za-z0-9]%' -- regix
+GROUP BY 
+    Manufacturer;
+
+
+//This Query us created to find the claim price of DOF trcuks  
+	SELECT 
+    Id,
+    Vin,
+    Manufacturer,
+    PurchaseTotalNetPrice,
+    CASE 
+        WHEN PurchaseDate IS NULL THEN 0
+        WHEN New_SecondHand = 'second_hand' AND YEAR(PurchaseDate) IN (2012, 2013) THEN PurchaseTotalNetPrice * 0.05 
+        WHEN New_SecondHand = 'second_hand' THEN PurchaseTotalNetPrice * 0.50
+        WHEN YEAR(PurchaseDate) IN (2012, 2013) THEN PurchaseTotalNetPrice  * 0.50
+        ELSE PurchaseTotalNetPrice * 0.5
+    END AS ClaimValue 
+FROM 
+    dbo.dummydatasetnew
+WHERE 
+    Manufacturer = 'dof'
+    AND Weight_Tons >= 6
+    AND PurchaseDate BETWEEN '1997-01-01' AND '2013-12-31'
+    AND LEN(Vin) = 17
+    AND Vin NOT LIKE '%[^A-Za-z0-9]%';
+
+
+
